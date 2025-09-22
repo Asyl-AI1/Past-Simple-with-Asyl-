@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Simple with Asyl🤍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- A bright and stylish color palette -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F9FAFC;
+            color: #2C3E50;
+        }
+        .nav-link.active {
+            background-color: #00C6B0;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 198, 176, 0.3);
+        }
+        .task-card {
+            background: linear-gradient(135deg, #FFFFFF, #E8F8F6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .vocab-card {
+            perspective: 1000px;
+        }
+        .vocab-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .vocab-card.flipped .vocab-card-inner {
+            transform: rotateY(180deg);
+        }
+        .vocab-card-front, .vocab-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #C4E2DF;
+        }
+        .vocab-card-front {
+            background-color: #FFFFFF;
+        }
+        .vocab-card-back {
+            background-color: #00C6B0;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .quiz-answer {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .quiz-answer.show {
+            max-height: 100px;
+            opacity: 1;
+        }
+        .exercise-input {
+            width: 150px;
+        }
+        .header-main-text {
+            color: #007B7A;
+        }
+        .accent-text {
+            color: #FFD166;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold header-main-text">Past Simple with Asyl🤍</h1>
+            <p class="text-lg text-[#007B7A] mt-2">Hello, Star Creator! Your awesome worksheet is ready. ✨</p>
+        </header>
+
+        <nav class="flex justify-center bg-white/70 backdrop-blur-sm rounded-full shadow-md p-2 mb-8 sticky top-4 z-10">
+            <button data-target="learn" class="nav-link active flex-1 text-center py-2 px-4 rounded-full transition-colors duration-300">🧠 Learn</button>
+            <button data-target="words" class="nav-link flex-1 text-center py-2 px-4 rounded-full transition-colors duration-300">📚 Words</button>
+            <button data-target="practice" class="nav-link flex-1 text-center py-2 px-4 rounded-full transition-colors duration-300">🎤 Practice</button>
+            <button data-target="quiz" class="nav-link flex-1 text-center py-2 px-4 rounded-full transition-colors duration-300">✅ Quiz</button>
+        </nav>
+
+        <main id="content-container">
+            <section id="learn" class="content-section">
+                <div class="text-center mb-8 p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+                    <h2 class="text-3xl font-bold header-main-text mb-2">⏰ Time Machine Grammar</h2>
+                    <p class="text-gray-600">The <strong>Past Simple</strong> is for actions that are finished. It's like a time machine that takes you to the past to tell a story about what happened!</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Usage & Time Expressions</h3>
+                        <p class="mt-2 text-gray-600">We use the Past Simple for actions that started and finished in the past. We often use it with specific time words.</p>
+                        <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+                            <li><strong>Finished actions:</strong> <em>I <strong>watched</strong> a movie yesterday.</em></li>
+                            <li><strong>Series of finished actions:</strong> <em>I <strong>finished</strong> my homework, <strong>went</strong> to the park, and <strong>met</strong> my friends.</em></li>
+                            <li><strong>Time expressions:</strong> <em>yesterday, last week, last month, last year, a week ago, in 2020, this morning.</em></li>
+                        </ul>
+                    </div>
+                    <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">The Formula</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-[#E8F8F6] text-[#007B7A]">
+                                    <tr>
+                                        <th class="p-3 rounded-tl-lg">Type</th>
+                                        <th class="p-3">Formula</th>
+                                        <th class="p-3 rounded-tr-lg">Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="p-3 font-bold text-green-600">Positive (+)</td>
+                                        <td class="p-3">I + verb + <strong>-ed</strong></td>
+                                        <td class="p-3">I <strong>listened</strong> to music.</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="p-3 font-bold text-red-600">Negative (-)</td>
+                                        <td class="p-3">I + <strong>did not</strong> + verb</td>
+                                        <td class="p-3">I <strong>didn't</strong> listen to music.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-bold text-blue-600">Question (?)</td>
+                                        <td class="p-3"><strong>Did</strong> + you + verb?</td>
+                                        <td class="p-3"><strong>Did</strong> you listen to music?</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                     <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Irregular Verbs: The Cool Exceptions</h3>
+                        <p class="mt-2 text-gray-600">Most verbs are regular, but these special verbs don't follow the rule. You need to memorize their past tense forms.</p>
+                        <div class="grid grid-cols-2 gap-4 mt-4 text-center">
+                            <div class="bg-gray-100 p-2 rounded-lg"><strong>Base Form</strong></div>
+                            <div class="bg-gray-100 p-2 rounded-lg"><strong>Past Simple</strong></div>
+                            <div class="p-2">be</div><div class="p-2">was / were</div>
+                            <div class="p-2">do</div><div class="p-2">did</div>
+                            <div class="p-2">go</div><div class="p-2">went</div>
+                            <div class="p-2">have</div><div class="p-2">had</div>
+                            <div class="p-2">make</div><div class="p-2">made</div>
+                            <div class="p-2">eat</div><div class="p-2">ate</div>
+                            <div class="p-2">read</div><div class="p-2">read</div>
+                            <div class="p-2">write</div><div class="p-2">wrote</div>
+                            <div class="p-2">see</div><div class="p-2">saw</div>
+                            <div class="p-2">come</div><div class="p-2">came</div>
+                            <div class="p-2">get</div><div class="p-2">got</div>
+                            <div class="p-2">take</div><div class="p-2">took</div>
+                            <div class="p-2">run</div><div class="p-2">ran</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="words" class="content-section hidden">
+                <div class="text-center mb-8 p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+                    <h2 class="text-3xl font-bold header-main-text mb-2">✨ Vocabulary for You!</h2>
+                    <p class="text-gray-600">Here are some words related to things you like. Click on a card to flip it and see the translation and an example!</p>
+                </div>
+                <div id="vocab-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                </div>
+            </section>
+
+            <section id="practice" class="content-section hidden">
+                <div class="text-center mb-8 p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+                     <h2 class="text-3xl font-bold header-main-text mb-2">🎙️ Speaking & Writing Challenges</h2>
+                     <p class="text-gray-600">Ready to tell your story? Try these fun tasks. Remember to focus on just speaking and having fun, don't worry about being perfect!</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Challenge 1: Yesterday's Vlog! ⏱️</h3>
+                        <p class="mt-2 text-gray-700">Imagine you're making a short vlog about your day. What three things did you do yesterday? Start with: <strong>"Hey everyone, yesterday was amazing! I..."</strong></p>
+                        <p class="mt-4 p-3 bg-gray-100 rounded-lg text-sm text-gray-600"><em>Example: "Yesterday, I went to volleyball practice. Then, I played my favorite song on repeat. After that, I made a new TikTok video with my friends."</em></p>
+                    </div>
+                     <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Challenge 2: The "Freeze Time" Story 🥶</h3>
+                        <p class="mt-2 text-gray-700">Imagine you had the power to freeze time like in a video game! What did you do when everyone was frozen? Tell a short, silly story.</p>
+                         <p class="mt-4 p-3 bg-gray-100 rounded-lg text-sm text-gray-600"><strong>Your story should start like this:</strong> "I was walking home from school. Suddenly, I froze time! I..."</p>
+                    </div>
+                     <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Challenge 3: Your Favorite Movie Review 🎬</h3>
+                        <p class="mt-2 text-gray-700">Think about a movie you watched recently. Tell us what it was called, who you watched it with, and if you liked it.</p>
+                        <p class="mt-4 p-3 bg-gray-100 rounded-lg text-sm text-gray-600"><strong>You can start with:</strong> "Last weekend, I watched a movie called... I watched it with... It was (fun/boring/amazing) because..."</p>
+                    </div>
+                     <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Writing Task: My Weekend Highlights ✍️</h3>
+                        <p class="mt-2 text-gray-700">Finish these sentences in a notebook to make a short story about your last weekend:</p>
+                        <ol class="list-decimal list-inside mt-4 space-y-2 text-gray-600">
+                             <li>On Saturday, I...</li>
+                             <li>My friends and I...</li>
+                             <li>I listened to...</li>
+                             <li>I also watched a TikTok video where someone...</li>
+                             <li>On Sunday, I...</li>
+                        </ol>
+                    </div>
+                    <div class="task-card border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-2xl font-semibold text-gray-800">Combo: The "Viral Video" Challenge 🚀</h3>
+                        <p class="mt-2 text-gray-700">First, tell the story, then write it down.</p>
+                        <ul class="mt-4 space-y-2 text-gray-600">
+                             <li><strong>Step 1 (Speaking):</strong> Imagine you created a TikTok video that got a million likes! Tell the story of how you made it.</li>
+                             <li><strong>Step 2 (Writing):</strong> Now, write a short summary (3-4 sentences) of that story.</li>
+                        </ul>
+                    </div>
+                    <div class="text-center my-8 p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+                     <h2 class="text-3xl font-bold header-main-text mb-2">📝 Grammar Exercises</h2>
+                     <p class="text-gray-600">Time to put your knowledge to the test! Complete the sentences below by typing the correct form of the verb.</p>
+                </div>
+                <div id="grammar-exercises" class="space-y-6">
+                </div>
+                </div>
+            </section>
+
+            <section id="quiz" class="content-section hidden">
+                <div class="text-center mb-8 p-6 bg-white rounded-2xl shadow-sm border border-gray-200">
+                     <h2 class="text-3xl font-bold header-main-text mb-2">✅ Self-Check Quiz</h2>
+                     <p class="text-gray-600">Answer these questions to see how much you remember! Click the button to check your answer.</p>
+                </div>
+                <div id="quiz-container" class="space-y-4">
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const targetId = link.getAttribute('data-target');
+                    
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    contentSections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.remove('hidden');
+                        } else {
+                            section.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            const vocabData = [
+                { en: 'Played', ru: 'играла', ex: 'I played volleyball with my friends yesterday.' },
+                { en: 'Watched', ru: 'смотрела', ex: 'We watched a new movie last night.' },
+                { en: 'Listened', ru: 'слушала', ex: 'I listened to my favorite song this morning.' },
+                { en: 'Went', ru: 'ходила/ездила', ex: 'I went to school by bus.' },
+                { en: 'Made', ru: 'сделала', ex: 'I made a cool TikTok video.' },
+                { en: 'Studied', ru: 'училась', ex: 'I studied English for my test.' },
+                { en: 'Scrolled', ru: 'листала', ex: 'I scrolled on my phone for 10 minutes.' },
+                { en: 'Danced', ru: 'танцевала', ex: 'I danced to the music in my room.' },
+                { en: 'Talked', ru: 'разговаривала', ex: 'I talked to my best friend on the phone.' },
+                { en: 'Laughed', ru: 'смеялась', ex: 'My friends and I laughed so much!' },
+                { en: 'Ate', ru: 'ела', ex: 'I ate a delicious pizza.' },
+                { en: 'Wrote', ru: 'писала', ex: 'I wrote a short story for school.' }
+            ];
+
+            const vocabGrid = document.getElementById('vocab-grid');
+            vocabData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card h-32 cursor-pointer';
+                card.innerHTML = `
+                    <div class="vocab-card-inner">
+                        <div class="vocab-card-front">
+                            <h4 class="text-xl font-semibold text-gray-800">${item.en}</h4>
+                        </div>
+                        <div class="vocab-card-back">
+                            <h5 class="text-lg font-semibold">${item.ru}</h5>
+                            <p class="text-xs text-center mt-2">${item.ex}</p>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    card.classList.toggle('flipped');
+                });
+                vocabGrid.appendChild(card);
+            });
+
+            const grammarExercises = [
+                {
+                    type: 'regular',
+                    title: 'Fill in the Blanks (Regular Verbs)',
+                    instructions: 'Change the verb in parentheses to the Past Simple form.',
+                    sentences: [
+                        { text: 'I (listen) to my favorite songs.', answer: 'listened' },
+                        { text: 'She (watch) a movie with her friends.', answer: 'watched' },
+                        { text: 'We (play) volleyball all afternoon.', answer: 'played' },
+                        { text: 'My friend (talk) about a new TikTok trend.', answer: 'talked' },
+                        { text: 'I (scroll) through TikTok for a long time.', answer: 'scrolled' },
+                    ]
+                },
+                {
+                    type: 'irregular',
+                    title: 'Fill in the Blanks (Irregular Verbs)',
+                    instructions: 'Change the verb in parentheses to the Past Simple form. Be careful!',
+                    sentences: [
+                        { text: 'I (go) to the movies last weekend.', answer: 'went' },
+                        { text: 'She (make) a video about her day.', answer: 'made' },
+                        { text: 'We (eat) my favorite pizza for dinner.', answer: 'ate' },
+                        { text: 'He (write) a funny story for a class.', answer: 'wrote' },
+                        { text: 'I (see) a funny cat video yesterday.', answer: 'saw' },
+                    ]
+                },
+                {
+                    type: 'negative',
+                    title: 'Negative Sentences',
+                    instructions: 'Make the sentences negative.',
+                    sentences: [
+                        { text: 'I played volleyball yesterday.', answer: 'I didn\'t play volleyball yesterday.' },
+                        { text: 'She watched the movie.', answer: 'She didn\'t watch the movie.' },
+                        { text: 'We went to the store.', answer: 'We didn\'t go to the store.' },
+                        { text: 'He did his homework.', answer: 'He didn\'t do his homework.' }
+                    ]
+                },
+                {
+                    type: 'question',
+                    title: 'Questions',
+                    instructions: 'Write a question for each answer.',
+                    sentences: [
+                        { text: 'Yes, I talked to my friend.', answer: 'Did you talk to your friend?' },
+                        { text: 'No, they didn\'t go to the movies.', answer: 'Did they go to the movies?' },
+                        { text: 'Yes, she studied for the test.', answer: 'Did she study for the test?' }
+                    ]
+                }
+            ];
+
+            const exercisesContainer = document.getElementById('grammar-exercises');
+            grammarExercises.forEach(exercise => {
+                const exerciseCard = document.createElement('div');
+                exerciseCard.className = 'task-card border border-gray-200 rounded-2xl p-6';
+                exerciseCard.innerHTML = `
+                    <h3 class="text-2xl font-semibold text-gray-800">${exercise.title}</h3>
+                    <p class="mt-2 text-gray-700">${exercise.instructions}</p>
+                    <form class="mt-4 space-y-4">
+                        ${exercise.sentences.map((item, index) => `
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <span class="text-gray-600">${item.text.replace('(','').replace(')','')}</span>
+                                <input type="text" data-answer="${item.answer.toLowerCase()}" class="exercise-input p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00C6B0] flex-shrink-0">
+                                <span class="feedback text-sm font-semibold mt-1 sm:mt-0"></span>
+                            </div>
+                        `).join('')}
+                        <button type="button" class="check-btn mt-4 bg-[#00C6B0] text-white px-4 py-2 rounded-full hover:bg-[#007B7A] transition-colors">Check Answers</button>
+                    </form>
+                `;
+                exercisesContainer.appendChild(exerciseCard);
+            });
+
+            exercisesContainer.querySelectorAll('.check-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const form = button.closest('form');
+                    form.querySelectorAll('input').forEach(input => {
+                        const feedbackSpan = input.nextElementSibling;
+                        const userAnswer = input.value.trim().toLowerCase();
+                        const correctAnswer = input.getAttribute('data-answer');
+                        if (userAnswer === correctAnswer) {
+                            feedbackSpan.textContent = 'Correct! ✅';
+                            feedbackSpan.className = 'feedback text-sm font-semibold text-green-600';
+                        } else {
+                            feedbackSpan.textContent = `Incorrect. Try again.`;
+                            feedbackSpan.className = 'feedback text-sm font-semibold text-red-600';
+                        }
+                    });
+                });
+            });
+
+            const quizData = [
+                { q: 'How do we make a regular verb Past Simple?', a: 'Add <strong>-ed</strong>.' },
+                { q: 'What is the past tense of the verb "go"?', a: '<strong>Went</strong>.' },
+                { q: 'How do you make a negative sentence in the past?', a: 'Use <strong>did not</strong> or <strong>didn\'t</strong> and the base verb (e.g., I didn\'t play).' },
+                { q: 'Is the sentence "I watched a movie now" correct? Why or why not?', a: 'No, because "now" is for the present. We should say "I watched a movie yesterday" or "I am watching a movie now."' }
+            ];
+
+            const quizContainer = document.getElementById('quiz-container');
+            quizData.forEach((item, index) => {
+                const quizItem = document.createElement('div');
+                quizItem.className = 'task-card border border-gray-200 rounded-2xl p-6';
+                quizItem.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <p class="font-semibold text-gray-700">${index + 1}. ${item.q}</p>
+                        <button class="toggle-answer-btn bg-[#00C6B0] text-white text-sm px-3 py-1 rounded-full hover:bg-[#007B7A] transition-colors">Answer</button>
+                    </div>
+                    <div class="quiz-answer mt-2 text-gray-800 bg-gray-50 p-3 rounded-lg">
+                        ${item.a}
+                    </div>
+                `;
+                quizContainer.appendChild(quizItem);
+            });
+
+            document.querySelectorAll('.toggle-answer-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answerDiv = button.parentElement.nextElementSibling;
+                    const isShown = answerDiv.classList.contains('show');
+                    answerDiv.classList.toggle('show', !isShown);
+                    button.textContent = isShown ? 'Answer' : 'Hide';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
